@@ -13,8 +13,11 @@ O objetivo desta atividade é demonstrar a criação e estruturação de uma pá
 ---
 
 Curso: Análise e Desenvolvimento de Sistemas
+
 Disciplina: Desenvolvimento Front-End para Web
+
 Instituição: Cruzeiro do Sul
+
 Ano/Semestre: 2025/2
 
 Gabriel Martins

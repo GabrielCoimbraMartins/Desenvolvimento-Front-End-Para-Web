@@ -4,45 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONG Acolhe Pet - Início</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/Base.css">
+    <link rel="stylesheet" href="CSS/Layout.css">
+    <link rel="stylesheet" href="CSS/Components.css">
 </head>
 <body>
-    <header>
-        <h1>ONG Acolhe Pet</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
+
+<header class="header">
+    <div class="container header-content">
+        <h1 class="logo">Acolhe Pet</h1>
+
+        <nav class="nav-desktop">
+            <ul class="nav-list">
+                <li><a href="index.html" class="active">Início</a></li>
                 <li><a href="projetos.html">Projetos</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
             </ul>
         </nav>
-    </header>
 
-    <main>
-        <section>
-            <h2>Quem Somos</h2>
-            <p>Somos uma organização sem fins lucrativos voltada a resgatar, tratar e promover adoção de animais abandonados.</p>
-            <img src="Imagens/cachorro.jpg" alt="Voluntários cuidando de um cachorro resgatado" width="400">
-        </section>
+        <button class="hamburger js-hamburger">☰</button>
+    </div>
 
-        <section>
-            <h2>Missão, Visão e Valores</h2>
-            <p><strong>Missão:</strong> Proteger e acolher animais em situação de rua.</p>
-            <p><strong>Visão:</strong> Ser referência no resgate e adoção responsável.</p>
-            <p><strong>Valores:</strong> Amor, respeito e responsabilidade.</p>
-        </section>
+    <nav class="mobile-nav js-mobile-nav">
+        <ul>
+            <li><a href="index.html" class="active">Início</a></li>
+            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <section>
-            <h2>Contato</h2>
-            <address>
-                <p>Endereço: Rua do Dog Feliz, 52 - Bairro Amigo - São José dos Pinhais/PR</p>
-                <p>Telefone: (41) 99111-1111</p>
-                <p>E-mail: contato@acolhepet.org.br</p>
-            </address>
-        </section>
-    </main>
+<main class="container">
+    <section class="card">
+        <h2>Quem Somos</h2>
+        <p>Somos uma ONG dedicada ao resgate, cuidado e adoção de animais abandonados.</p>
+        <img src="Imagens/cachorro.jpg" alt="Cachorro resgatado">
+    </section>
 
-    <footer>
-        <p>&copy; 2025 ONG Acolhe Pet - Todos os direitos reservados.</p>
-    </footer>
+    <section class="card">
+        <h2>Missão, Visão e Valores</h2>
+        <p><strong>Missão:</strong> Proteger e acolher animais em situação de rua.</p>
+        <p><strong>Visão:</strong> Ser referência em adoção responsável.</p>
+        <p><strong>Valores:</strong> Amor, respeito e responsabilidade.</p>
+        <img src="Imagens/feliz.jpg" alt="Cachorro resgatado">
+    </section>
+
+    <section class="card">
+        <h2>Contato</h2>
+        <address>
+            Rua do Dog Feliz, 52 - São José dos Pinhais/PR<br>
+            (41) 99111-1111<br>
+            contato@acolhepet.org.br
+        </address>
+        <img src="Imagens/contato.jpg" alt="Cachorro resgatado">
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 ONG Acolhe Pet</p>
+</footer>
+
+<script src="JS/menu.js"></script>
+
 </body>
 </html>

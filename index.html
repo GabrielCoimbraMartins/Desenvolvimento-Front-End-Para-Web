@@ -1,72 +1,244 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG Acolhe Pet - Início</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONG Acolhe Pet</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="CSS/Base.css">
-    <link rel="stylesheet" href="CSS/Layout.css">
-    <link rel="stylesheet" href="CSS/Components.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="CSS/Base.css" />
+  <link rel="stylesheet" href="CSS/Layout.css" />
+  <link rel="stylesheet" href="CSS/Components.css" />
+
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header, .footer {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-list a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-list a.active,
+    .nav-list a:hover {
+      color: #64ffda;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.6rem;
+      border: none;
+      border-radius: 6px;
+      background: #2b2b2b;
+      color: #fff;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #64ffda;
+    }
+
+    button {
+      background: #64ffda;
+      color: #000;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00e5c0;
+    }
+
+    .error {
+      color: #ff5252;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
+
 <body>
-
-<header class="header">
-    <div class="container header-content">
-        <h1 class="logo">Acolhe Pet</h1>
-
-        <nav class="nav-desktop">
-            <ul class="nav-list">
-                <li><a href="index.html" class="active">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-            </ul>
-        </nav>
-
-        <button class="hamburger js-hamburger">☰</button>
-    </div>
-
-    <nav class="mobile-nav js-mobile-nav">
-        <ul>
-            <li><a href="index.html" class="active">Início</a></li>
-            <li><a href="projetos.html">Projetos</a></li>
-            <li><a href="cadastro.html">Cadastro</a></li>
-        </ul>
+  <header class="header">
+    <h1 class="logo">Acolhe Pet</h1>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#home" class="active">Início</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#cadastro">Cadastro</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
 
-<main class="container">
-    <section class="card">
-        <h2>Quem Somos</h2>
-        <p>Somos uma ONG dedicada ao resgate, cuidado e adoção de animais abandonados.</p>
-        <img src="Imagens/cachorro.jpg" alt="Cachorro resgatado">
-    </section>
+  <main id="conteudo" class="container"></main>
 
-    <section class="card">
-        <h2>Missão, Visão e Valores</h2>
-        <p><strong>Missão:</strong> Proteger e acolher animais em situação de rua.</p>
-        <p><strong>Visão:</strong> Ser referência em adoção responsável.</p>
-        <p><strong>Valores:</strong> Amor, respeito e responsabilidade.</p>
-        <img src="Imagens/feliz.jpg" alt="Cachorro resgatado">
-    </section>
+  <footer class="footer">
+    <p>&copy; 2025 ONG Acolhe Pet</p>
+  </footer>
 
-    <section class="card">
-        <h2>Contato</h2>
-        <address>
+  <script>
+    // --- Templates SPA ---
+    const templates = {
+      home: `
+        <section class="card">
+          <h2>Quem Somos</h2>
+          <p>Somos uma ONG dedicada ao resgate, cuidado e adoção de animais abandonados.</p>
+          <img src="Imagens/cachorro.jpg" alt="Cachorro resgatado">
+        </section>
+
+        <section class="card">
+          <h2>Missão, Visão e Valores</h2>
+          <p><strong>Missão:</strong> Proteger e acolher animais em situação de rua.</p>
+          <p><strong>Visão:</strong> Ser referência em adoção responsável.</p>
+          <p><strong>Valores:</strong> Amor, respeito e responsabilidade.</p>
+          <img src="Imagens/feliz.jpg" alt="Cachorro feliz">
+        </section>
+
+        <section class="card">
+          <h2>Contato</h2>
+          <address>
             Rua do Dog Feliz, 52 - São José dos Pinhais/PR<br>
             (41) 99111-1111<br>
             contato@acolhepet.org.br
-        </address>
-        <img src="Imagens/contato.jpg" alt="Cachorro resgatado">
-    </section>
-</main>
+          </address>
+          <img src="Imagens/contato.jpg" alt="Cachorro contato">
+        </section>
+      `,
 
-<footer class="footer">
-    <p>&copy; 2025 ONG Acolhe Pet</p>
-</footer>
+      projetos: `
+        <section class="card">
+          <h2>Projetos Atuais</h2>
+          <p>Nossos projetos visam o bem-estar animal e a conscientização social.</p>
+          <ul>
+            <li>🐶 Resgate e adoção responsável</li>
+            <li>🐱 Castração comunitária</li>
+            <li>🐾 Educação e conscientização</li>
+          </ul>
+          <img src="Imagens/projetos.jpg" alt="Projetos Acolhe Pet">
+        </section>
+      `,
 
-<script src="JS/menu.js"></script>
+      cadastro: `
+        <section class="card">
+          <h2>Cadastro de Voluntário</h2>
+          <form id="formCadastro">
+            <label>Nome:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
 
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+
+            <label>Mensagem:</label>
+            <textarea id="mensagem" rows="4" placeholder="Por que deseja ser voluntário?" required></textarea>
+
+            <button type="submit">Enviar</button>
+            <p id="erro" class="error"></p>
+          </form>
+        </section>
+      `
+    };
+
+    // --- Função SPA (carrega conteúdo dinâmico) ---
+    const conteudo = document.getElementById('conteudo');
+
+    function carregarPagina(hash) {
+      const rota = hash.replace('#', '') || 'home';
+      conteudo.innerHTML = templates[rota] || `<p>Página não encontrada.</p>`;
+
+      // aplica destaque no menu ativo
+      document.querySelectorAll('.nav-list a').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${rota}`);
+      });
+
+      // se for a página de cadastro, aplica verificação
+      if (rota === 'cadastro') inicializarForm();
+    }
+
+    // --- Validação de formulário ---
+    function inicializarForm() {
+      const form = document.getElementById('formCadastro');
+      const erro = document.getElementById('erro');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const msg = document.getElementById('mensagem').value.trim();
+
+        if (!nome || !email || !msg) {
+          erro.textContent = "Por favor, preencha todos os campos corretamente.";
+          return;
+        }
+
+        if (!email.includes('@') || !email.includes('.')) {
+          erro.textContent = "E-mail inválido.";
+          return;
+        }
+
+        erro.textContent = "";
+        localStorage.setItem('cadastro', JSON.stringify({ nome, email, msg }));
+        alert("Cadastro realizado com sucesso!");
+        form.reset();
+      });
+    }
+
+    // --- Eventos SPA ---
+    window.addEventListener('hashchange', () => carregarPagina(location.hash));
+    window.addEventListener('load', () => carregarPagina(location.hash));
+  </script>
 </body>
 </html>

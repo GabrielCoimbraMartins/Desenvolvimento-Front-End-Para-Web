@@ -1,9 +1,8 @@
-/* JS/templates.js
-   Define as páginas como strings. Não usa módulos ES (compatível com <script> normal).
-*/
-window.TEMPLATES = {
+// JS/templates.js
+// --- Templates SPA ---
+const templates = {
   home: `
-    <section class="card" id="home">
+    <section class="card">
       <h2>Quem Somos</h2>
       <p>Somos uma ONG dedicada ao resgate, cuidado e adoção de animais abandonados.</p>
       <img src="Imagens/cachorro.jpg" alt="Cachorro resgatado">
@@ -16,92 +15,59 @@ window.TEMPLATES = {
       <p><strong>Valores:</strong> Amor, respeito e responsabilidade.</p>
       <img src="Imagens/feliz.jpg" alt="Cachorro feliz">
     </section>
-  `,
 
-  projetos: `
-    <section class="card" id="projetos">
-      <h2>Projetos Ativos</h2>
-      <p>Conheça nossos projetos que estão transformando a vida de animais:</p>
-      <ul>
-        <li>🐾 Adoção Responsável</li>
-        <li>💉 Campanha de Castração Solidária</li>
-        <li>🏠 Lar Temporário</li>
-      </ul>
-      <img src="Imagens/doacao.jpg" alt="Doação de ração">
+    <section class="card">
+      <h2>Contato</h2>
+      <address>
+        Rua do Dog Feliz, 52 - São José dos Pinhais/PR<br>
+        (41) 99111-1111<br>
+        contato@acolhepet.org.br
+      </address>
+      <img src="Imagens/contato.jpg" alt="Cachorro contato">
     </section>
   `,
 
+projetos: `
+  <section class="card">
+    <h2>Adote um Amigo</h2>
+    <p>Campanha permanente de adoção responsável!</p>
+    <!-- imagem: voluntarios.jpg (existe na sua pasta Imagens) -->
+    <img src="Imagens/voluntarios.jpg" alt="Voluntários com animais disponíveis para adoção">
+    <span class="tag tag-success">Adoção</span>
+  </section>
+
+  <section class="card">
+    <h2>Como Ser Voluntário</h2>
+    <p>Ajude nos cuidados, eventos e divulgações!</p>
+    <!-- imagem: voluntariado.jpg (verifique extensão exata no seu diretório) -->
+    <img src="Imagens/voluntariado.jpg" alt="Voluntários cuidando em evento">
+    <span class="tag tag-info">Voluntariado</span>
+  </section>
+
+  <section class="card">
+    <h2>Como Doar</h2>
+    <p>Rações, medicamentos e doações financeiras são bem-vindas.</p>
+    <!-- imagem: doacao.jpeg (use exatamente .jpeg ou .jpg conforme o arquivo) -->
+    <img src="Imagens/doacao.jpeg" alt="Doação de ração">
+    <span class="tag tag-warning">Doações</span>
+  </section>
+`,  
+
   cadastro: `
-    <section class="card" id="cadastro">
-      <h2>Cadastro de Voluntário / Doador</h2>
+    <section class="card">
+      <h2>Cadastro de Voluntário</h2>
+      <form id="formCadastro">
+        <label>Nome:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome" required>
 
-      <div id="form-messages" aria-live="polite"></div>
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="Digite seu e-mail" required>
 
-      <form id="formCadastro" novalidate>
-        <fieldset>
-          <legend>Informações Pessoais</legend>
+        <label>Mensagem:</label>
+        <textarea id="mensagem" rows="4" placeholder="Por que deseja ser voluntário?" required></textarea>
 
-          <label for="nome">Nome Completo
-            <input type="text" id="nome" name="nome" required>
-            <small class="error" data-for="nome"></small>
-          </label>
-
-          <label for="email">E-mail
-            <input type="email" id="email" name="email" required>
-            <small class="error" data-for="email"></small>
-          </label>
-
-          <label for="cpf">CPF
-            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" pattern="\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}">
-            <small class="error" data-for="cpf"></small>
-          </label>
-
-          <label for="telefone">Telefone
-            <input type="tel" id="telefone" name="telefone" placeholder="(41) 99999-9999" required>
-            <small class="error" data-for="telefone"></small>
-          </label>
-
-          <label for="dataNascimento">Data de Nascimento
-            <input type="date" id="dataNascimento" name="dataNascimento" required>
-            <small class="error" data-for="dataNascimento"></small>
-          </label>
-        </fieldset>
-
-        <fieldset>
-          <legend>Endereço</legend>
-
-          <label for="endereco">Endereço
-            <input type="text" id="endereco" name="endereco" required>
-            <small class="error" data-for="endereco"></small>
-          </label>
-
-          <label for="cep">CEP
-            <input type="text" id="cep" name="cep" placeholder="00000-000" pattern="\\d{5}-\\d{3}" required>
-            <small class="error" data-for="cep"></small>
-          </label>
-
-          <label for="cidade">Cidade
-            <input type="text" id="cidade" name="cidade" required>
-            <small class="error" data-for="cidade"></small>
-          </label>
-
-          <label for="estado">Estado (UF)
-            <input type="text" id="estado" name="estado" maxlength="2" placeholder="PR" required>
-            <small class="error" data-for="estado"></small>
-          </label>
-        </fieldset>
-
-        <fieldset>
-          <legend>Tipo de Cadastro</legend>
-          <label><input type="radio" name="tipo" value="voluntario" required> Voluntário</label>
-          <label><input type="radio" name="tipo" value="doador"> Doador</label>
-          <small class="error" data-for="tipo"></small>
-        </fieldset>
-
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Enviar Cadastro</button>
-          <button type="reset" class="btn btn-ghost">Limpar</button>
-        </div>
+        <button type="submit">Enviar</button>
+        <p id="erro" class="error"></p>
       </form>
     </section>
   `

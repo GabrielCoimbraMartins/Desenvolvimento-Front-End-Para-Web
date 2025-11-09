@@ -1,19 +1,10 @@
-/* JS/menu.js */
-(function () {
+// JS/menu.js
+// --- Menu responsivo ---
+document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.js-hamburger');
   const mobileNav = document.querySelector('.js-mobile-nav');
 
-  if (!hamburger || !mobileNav) return;
-
   hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('open');
+    mobileNav.classList.toggle('active');
   });
-
-  // fechar menu ao clicar em um link (mobile)
-  mobileNav.addEventListener('click', (e) => {
-    const el = e.target;
-    if (el.tagName === 'A') {
-      mobileNav.classList.remove('open');
-    }
-  });
-})();
+});

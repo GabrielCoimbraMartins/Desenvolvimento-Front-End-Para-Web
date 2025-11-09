@@ -1,5 +1,3 @@
-// JS/templates.js
-// --- Templates SPA ---
 const templates = {
   home: `
     <section class="card">

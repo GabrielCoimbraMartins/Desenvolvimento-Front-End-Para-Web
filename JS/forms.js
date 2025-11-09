@@ -1,5 +1,3 @@
-// JS/forms.js
-// --- Validação e armazenamento de formulário ---
 function inicializarForm() {
   const form = document.getElementById('formCadastro');
   const erro = document.getElementById('erro');
